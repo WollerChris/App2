@@ -4,5 +4,9 @@
     flex-direction: column;
     width: 40vw;
     margin: auto;
+}
 
+.AddBtn{
+    margin-top: 20px;
+    width: 50px
 }

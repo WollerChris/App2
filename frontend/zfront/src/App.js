@@ -24,7 +24,7 @@ function App() {
       .catch(error=>console.log('this isnt working'))
   },[])
 
-// console.log(markers)
+console.log(users)
 
   return (
     <>
