@@ -18,7 +18,7 @@ function CreateAccount() {
     setUserName(username)
     setPassword(password)
     alert(`Account for ${fname} , ${lname} has been created`)
-    console.log({fname: fname, lname: lname, username: username, password: password})
+    // console.log({fname: fname, lname: lname, username: username, password: password})
     navigate('/')
 
 
@@ -31,7 +31,7 @@ function CreateAccount() {
             })
     .then(response => response.json()
     ).then(function (data) {
-      console.log(data)
+    //   console.log(data)
       window.location.reload();
     })
   }
@@ -58,8 +58,6 @@ function CreateAccount() {
                     onChange={(e) => setlName(e.target.value)}
                     /><br></br>
 
-                </form>
-                <form id='myForm' onSubmit = {handleSubmit}>
                 <label> User Name:</label> 
                 <input
                     type='text'
