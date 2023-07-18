@@ -52,3 +52,27 @@
     background-color: black;
     color: white;
 }
+
+.detailarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    margin: 10px 30px;
+    background-color: darkgrey;
+    color: black;
+    border-radius: 15px;
+}
+
+.detailtitle {
+    background-color: black;
+    margin: 0px;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 15px;    
+    border-top-right-radius: 15px;
+
+}
+
+.detailsOther {
+    padding: 10px;
+}

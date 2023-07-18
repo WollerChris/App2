@@ -8,6 +8,10 @@ function User() {
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
     const [searchText, setSearchText] = useState('')
+    const [id, setid] = useState('')
+    const [name, setname] = useState('')
+    const [description, setdescription] = useState('')
+    const [quantity, setquantity] = useState('')
 
 
     useEffect(() => {
@@ -20,11 +24,20 @@ function User() {
         .catch(error=>console.log('this isnt working'))
     },[])
   
-  console.log(inventory)
+//   console.log(inventory)
   const lowerCaseHelper = () => {
     let searchItem = document.getElementById("searchInput").value;
     setSearchText(searchItem.toLowerCase())
   }
+
+  const AllData = (item) => {
+    setid(item.id)
+    setname(item.itemname)
+    setdescription(item.description)
+    setquantity(item.quantity)
+    console.log(item.itemname)
+  }
+
   
   if (loading){
     return <p>loading</p>
@@ -43,7 +56,7 @@ function User() {
       <div className='fullcontainer'>
         {inventory.filter(item => item.itemname.toLowerCase().includes(searchText))
           .map(item => (
-            <div className='singleItemContainer'>
+            <div className='singleItemContainer' onClick={() => AllData(item)}>
                 <div className='itemHeader'>
                   <p className='idstyle'>Item ID: {item.id}</p>
                   <h3>Item Name: {item.itemname}</h3>
@@ -53,6 +66,12 @@ function User() {
             </div>
           ))
       }
+      </div>
+      <div className='detailarea'>
+        <h1 className='detailtitle'>Item Name: {name} </h1>
+
+        <h3 className='detailsOther'>Description: {description} </h3>
+        <p className='detailsOther'>Quantity: {quantity}</p>
       </div>
       </>
     );
