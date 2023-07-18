@@ -1,0 +1,10 @@
+.FormContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 20vw;
+    background-color: lightgrey;
+    padding: 20px;
+    margin: auto;
+}
