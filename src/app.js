@@ -15,4 +15,13 @@ app.get('/userlist', cors(), (req, res) => {
         })
 })
 
+app.get('/items', cors(), (req, res) => {
+    knex('inventory_table')
+        .select('*')
+        .then(result => {
+            var inventory = result.map(item => item)
+            res.json(inventory);
+        })
+})
+
 app.listen(port, () => { console.log(`Server running at ${port}.  Let's see some queries!`)})
