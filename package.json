@@ -1,0 +1,26 @@
+{
+  "name": "app2",
+  "version": "1.0.0",
+  "description": "App for final Supra Coder Prefix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WollerChris/App2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WollerChris/App2/issues"
+  },
+  "homepage": "https://github.com/WollerChris/App2#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "knex": "^2.5.1",
+    "pg": "^8.11.1"
+  }
+}
