@@ -16,6 +16,7 @@ function Login() {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [users, setUsers] = useState([])
+//   const [id, setManagerId] = useState()
 
 
 
@@ -31,10 +32,15 @@ function Login() {
 
   const valid = () => {
     console.log(signIn)
-    let validManager = users.find((manager) => (manager.username === username &&  manager.password === password))
+    let validManager = users.find((manager) => (manager.username === username &&  manager.password === password)
+    )
+        
     if (validManager && signIn === '/manager') {
-        alert('valid Manager')
-        navigate(`${signIn}`)
+        users.map((manager) => { if (manager.username === username) {
+            let id = manager.id
+            alert('valid Manager')
+            navigate(`${signIn}/${id}`)
+        }})
     } else if(signIn === '/visitor') {
         alert('Reviewing inventory as visitor')
         navigate(`${signIn}`)

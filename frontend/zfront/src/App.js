@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Login from './Components/Login/Login';
 import User from './Components/User/User';
+import Manager from './Components/Manager/Manager';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
 import './App.css';
 
@@ -24,7 +25,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Login />}/>
             <Route path="/visitor" element={<User/>}/>
-            {/* <Route path="/manager" element={<Manager/>}/> */}
+            <Route path="/manager/:id" element={<Manager/>}/>
             <Route path="/createaccount" element={<CreateAccount/>}/>
         </Routes>
       </AppContext.Provider>
