@@ -31,7 +31,7 @@ function Login() {
   }
 
   const valid = () => {
-    console.log(signIn)
+    // console.log(signIn)
     let validManager = users.find((manager) => (manager.username === username &&  manager.password === password)
     )
         
@@ -39,7 +39,7 @@ function Login() {
         users.map((manager) => { if (manager.username === username) {
             let id = manager.id
             alert('valid Manager')
-            navigate(`${signIn}/${id}`)
+            navigate(`${signIn}/${id}`,{ state: manager.fname })
         }})
     } else if(signIn === '/visitor') {
         alert('Reviewing inventory as visitor')
@@ -58,7 +58,7 @@ function Login() {
       .catch(error=>console.log('this isnt working'))
   },[])
 
-console.log(users)
+// console.log(users)
 
 
   return (

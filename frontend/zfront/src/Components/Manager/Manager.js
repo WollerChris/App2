@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import './Manager.css';
 import { useEffect} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom'
 
 
 
 function Manager() {
+
+    const hello = useLocation().state;
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
     const [searchText, setSearchText] = useState('')
@@ -45,7 +48,8 @@ function Manager() {
     return (
       <>
       <div className='headerBar'>
-      <h4 className='pstyle'>Inventory Below</h4>
+      <h2 className='pstyle'>{`Welcome ${hello}`}</h2>
+      <h4 className='pstyle'>Inventory list</h4>
         <div className='searchContainer'id="searchContainer">
             <input className='searchInput' id="searchInput" type="text" name="search" 
                 placeholder="Search for item..." onChange={lowerCaseHelper}>
