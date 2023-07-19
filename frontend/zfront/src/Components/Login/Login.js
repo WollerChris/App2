@@ -12,9 +12,11 @@ function Login() {
 
   const navigate = useNavigate()
 
-  const [signIn, setSignIn] = useState('visitor');
+  const [signIn, setSignIn] = useState('');
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const [users, setUsers] = useState([])
+
 
 
   const handleChange = (e) => {
@@ -37,11 +39,10 @@ function Login() {
         alert('Reviewing inventory as visitor')
         navigate(`${signIn}`)
     } else if(!validManager && signIn === '/manager'){
-        alert('You do not have valid Manger account. Either log in as visitor or create account')
+        alert('Either your username and password are incorrect or you do not have valid Manger account. Either try again, log in as visitor or create account')
     }
   }
 
-  const [users, setUsers] = useState([])
   useEffect(() => {
     fetch('http://localhost:8081/userlist')
       .then((res) => res.json())
@@ -61,6 +62,7 @@ console.log(users)
         <div>
           <label for='loginSelect'>Role: </label>
           <select value={signIn} onChange={handleChange} id="loginSelect">
+            <option value='/'>Select Role</option>
             <option value='/visitor'>Visitor</option>
             <option value='/manager'>Manager</option>
           </select>
@@ -84,6 +86,11 @@ console.log(users)
         </div>
         <button className='LoginBtn' onClick={() => {handleSubmit()}}>Login</button>
         <button className='LoginBtn' onClick={() => navigate(`createaccount`)}>Create Account</button>
+        <p> If you are a visitor select "vistor" from role dropdown. No other information required.</p>  
+        <p>If you are a manager select 
+            "manager" role utilizing your account username and password. If you need manager permissions 
+            create a manager account. 
+        </p>
       </div>
     </>
   );
