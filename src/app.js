@@ -50,14 +50,13 @@ app.post('/addItem', async (req, res) => {
     const userid = parseInt(useridstrng)
     const itemname = req.body.itemname
     const description = req.body.description
-    // const quantity = req.body.quantity
     const quantitystrng = req.body.quantity
     const quantity = parseInt(quantitystrng)
+    // const quantity = req.body.quantity
 
-    // {numUserId, itemname, description, numQuantity}
 
     const createitem = {userid: userid, itemname: itemname, description: description, quantity: quantity}
-    // const createUser={update}
+
     console.log(`item create ${createitem}`)
     const UserAdded = await knex('inventory_table')
         .insert(createitem)
@@ -65,5 +64,30 @@ app.post('/addItem', async (req, res) => {
         res.status(200).json(UserAdded)
 })
 
+app.put('/updateitem', async (req, res) => {
+    const id = req.body.id
+    const useridstrng = req.body.userid
+    const userid = parseInt(useridstrng)
+    const itemname = req.body.itemname
+    const description = req.body.description
+    const quantitystrng = req.body.quantity
+    const quantity = parseInt(quantitystrng)
+    console.log(id, userid, itemname, description, quantity)
+    const UserUpdated = await knex('inventory_table')
+        .where({id: id})
+        .update({userid: userid, itemname: itemname, description: description, quantity: quantity})
+        .returning('*')
+        res.status(200).json(UserUpdated)
+})
+
+app.delete('/deleteitem', async (req, res) => {
+    const id = req.body.id
+    console.log(id)
+    const UserDelete = await knex('inventory_table')
+        .where({id: id})
+        .del()
+        .returning('*')
+        res.status(200).json(UserDelete)
+})
 
 app.listen(port, () => { console.log(`Server running at ${port}.  Let's see some queries!`)})

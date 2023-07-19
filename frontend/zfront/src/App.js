@@ -7,6 +7,7 @@ import User from './Components/User/User';
 import Manager from './Components/Manager/Manager';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
 import Additem from './Components/Additem/Additem';
+import UpdateItem from './Components/UpdateItem/UpdateItem';
 import './App.css';
 
 export const AppContext = createContext()
@@ -29,7 +30,7 @@ function App() {
             <Route path="/manager/:id" element={<Manager/>}/>
             <Route path="/createaccount" element={<CreateAccount/>}/>
             <Route path="/manager/:id/additem" element={<Additem/>}/>
-
+            <Route path="/manager/:id/updateitem" element={<UpdateItem/>}/>
         </Routes>
       </AppContext.Provider>
 
