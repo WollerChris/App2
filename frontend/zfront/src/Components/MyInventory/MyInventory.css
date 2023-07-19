@@ -1,0 +1,8 @@
+.MIheaderBar{
+    display: flex;
+    justify-content: space-between;
+    /* margin: 10px; */
+    height: 20px;
+    padding: 20px;
+    background-color: lightblue;
+}

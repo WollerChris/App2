@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import './Manager.css';
+import './MyInventory.css';
 import { useEffect} from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { filter } from 'lodash';
 
 
 
-function Manager() {
+function MyInventory() {
     const navigate = useNavigate()
     const hello = useLocation().state;
     const { id } = useParams();
@@ -20,7 +21,9 @@ function Manager() {
     const [modifier, setModifier] = useState()
     const [itemid, setItemId] = useState()
     const [deleteItem, setDeleteItem] = useState(false)
-
+    const [filteredData, setFilteredData] = useState([])
+console.log(id)
+console.log(filteredData)
 
     useEffect(() => {
       fetch('http://localhost:8081/items')
@@ -32,11 +35,7 @@ function Manager() {
         .catch(error=>console.log('this isnt working'))
     },[])
   
-//   console.log(inventory)
-  const lowerCaseHelper = () => {
-    let searchItem = document.getElementById("searchInput").value;
-    setSearchText(searchItem.toLowerCase())
-  }
+
 
   const AllData = (item) => {
     // setid(item.id)
@@ -81,28 +80,33 @@ function Manager() {
   }
 
 
+  const filterdata = mine => {
+    setFilteredData(
+      inventory.filter(myItem => {
+        console.log(myItem)
+        return myItem.userid == id
+        // if (myItem.userid == id) {
+        //     console.log(myItem)
+        // }
+      })
+    )
+  }
 
-  
   if (loading){
     return <p>loading</p>
   }
     return (
     <>
-      <div className='headerBar'>
-        <h2 className='pstyle'>{`Welcome`}</h2>
-        <h4 className='pstyle'>Inventory list</h4>
-        <button onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
+      <div className='MIheaderBar'>
+        <h2 className='pstyle'>{`Welcome, below is your personal inventory`}</h2>
+        <button className='UBtn' onClick={() => {filterdata()}} >Click To View My Inventory </button>
+        <button onClick={() => navigate(`/manager/${id}`,{state: hello})} >Main Inventory</button>
 
-          {/* <div className='searchContainer'id="searchContainer">
-              <input className='searchInput' id="searchInput" type="text" name="search" 
-                  placeholder="Search for item..." onChange={lowerCaseHelper}>
-              </input>
-          </div> */}
       </div>
 
       <div className='fullcontainer'>
         {/* {inventory.filter(item => item.itemname.includes(searchText)) */}
-          {inventory.map(item => (
+        {filteredData.map(item => (
             <div className='singleItemContainer' onClick={() => AllData(item)}>
                 <div className='itemHeader'>
                   <p className='idstyle'>Item ID: {item.id}</p>
@@ -114,11 +118,11 @@ function Manager() {
 
             </div>
           ))
-      }
+        }
       </div>
-      {/* <div> */}
+
       <div className='Mlower'>
-        <div>
+        {/* <div>
           { deleteItem ? 
                 <div className='MdetailareaDelete'>
                     <h1 className='MdetailtitleDelete'>Item Name: {name} </h1>
@@ -126,7 +130,7 @@ function Manager() {
                     <p className='MdetailsOther'>Quantity: {quantity}</p>
                     <p className='MdetailsOther'>Updated/Modified By: {modifier}</p>
                     <div>
-                      <button className='DeleteItemBtn' onClick={() => {handleDelete()}}>I AM SURE I WANT TO DELETE ITEM</button>
+                      <button className='DeleteItemBtn' onClick={() => {handleDelete()}}>ARE YOU SURE YOU WANT TO DELETE ITEM</button>
                       <button className='CancelItemBtn' onClick={() => setDeleteItem(false)}>Cancel Delete</button>
                     </div>
 
@@ -142,10 +146,10 @@ function Manager() {
             }
         </div>
         <div className='btnGroup'>
-            <button className='ABtn' onClick={() => navigate(`addItem`,{ state: id })} >Add Item</button>
+            <button className='ABtn' onClick={() => navigate(`/manager/${id}/addItem`,{ state: id })} >Add Item</button>
             <button className='UBtn' onClick={() => {handleUpdate()}} >Update Item </button>
             <button className='DBtn' onClick={() => setDeleteItem(true)}>Delete Item</button>
-        </div>
+        </div> */}
       </div>
   </>
     
@@ -153,5 +157,4 @@ function Manager() {
   }
   
 
-  export default Manager;
- 
+  export default MyInventory;

@@ -9,6 +9,8 @@ import CreateAccount from './Components/CreateAccount/CreateAccount';
 import Additem from './Components/Additem/Additem';
 import UpdateItem from './Components/UpdateItem/UpdateItem';
 import './App.css';
+import MyInventory from './Components/MyInventory/MyInventory';
+
 
 export const AppContext = createContext()
 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/createaccount" element={<CreateAccount/>}/>
             <Route path="/manager/:id/additem" element={<Additem/>}/>
             <Route path="/manager/:id/updateitem" element={<UpdateItem/>}/>
+            <Route path="/manager/:id/myinventory" element={<MyInventory/>}/>
+
         </Routes>
       </AppContext.Provider>
 

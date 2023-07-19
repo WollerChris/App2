@@ -38,11 +38,11 @@ function Login() {
     if (validManager && signIn === '/manager') {
         users.map((manager) => { if (manager.username === username) {
             let id = manager.id
-            alert('valid Manager')
-            navigate(`${signIn}/${id}`,{ state: manager.fname })
+      
+            navigate(`manager/${id}`,{ state: manager.fname })
         }})
     } else if(signIn === '/visitor') {
-        alert('Reviewing inventory as visitor')
+
         navigate(`${signIn}`)
     } else if(!validManager && signIn === '/manager'){
         alert('Either your username and password are incorrect or you do not have valid Manger account. Either try again, log in as visitor or create account')
