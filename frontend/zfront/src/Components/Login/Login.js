@@ -12,12 +12,7 @@ function Login() {
 
   const navigate = useNavigate()
 
-  const getInitialState = () => {
-    const value = 'visitor';
-    return value;
-  };
-
-  const [signIn, setSignIn] = useState(getInitialState);
+  const [signIn, setSignIn] = useState('visitor');
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
@@ -29,8 +24,21 @@ function Login() {
   const handleSubmit = (e) => {
     setUserName(username)
     setPassword(password)
-    // console.log({username: username, password: password})
-    navigate(`${signIn}`)
+    valid()
+  }
+
+  const valid = () => {
+    console.log(signIn)
+    let validManager = users.find((manager) => (manager.username === username &&  manager.password === password))
+    if (validManager && signIn === '/manager') {
+        alert('valid Manager')
+        navigate(`${signIn}`)
+    } else if(signIn === '/visitor') {
+        alert('Reviewing inventory as visitor')
+        navigate(`${signIn}`)
+    } else if(!validManager && signIn === '/manager'){
+        alert('You do not have valid Manger account. Either log in as visitor or create account')
+    }
   }
 
   const [users, setUsers] = useState([])
@@ -43,7 +51,7 @@ function Login() {
       .catch(error=>console.log('this isnt working'))
   },[])
 
-// console.log(users)
+console.log(users)
 
 
   return (
@@ -73,8 +81,6 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     />
             </form>
-          {/* <input className='userInputs' name='UserId' placeholder="UserName..." type='text' />
-          <input className='userInputs' name='PassWord' placeholder="User Password..." type='password' /> */}
         </div>
         <button className='LoginBtn' onClick={() => {handleSubmit()}}>Login</button>
         <button className='LoginBtn' onClick={() => navigate(`createaccount`)}>Create Account</button>
