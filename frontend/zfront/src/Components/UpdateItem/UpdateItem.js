@@ -34,6 +34,7 @@ const handleUpdate = (e) => {
       ).then(function (data) {
         console.log(data)
       })
+      window.location.reload()
     };
 
 
