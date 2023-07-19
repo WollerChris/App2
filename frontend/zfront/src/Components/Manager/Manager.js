@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 
 
 function Manager() {
-
+    const navigate = useNavigate()
     const hello = useLocation().state;
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
@@ -71,10 +71,25 @@ function Manager() {
           ))
       }
       </div>
+      <div className='Mlower'>
+        <div className='Mdetailarea'>
+            <h1 className='Mdetailtitle'>Item Name: {name} </h1>
+
+            <h3 className='MdetailsOther'>Description: {description} </h3>
+            <p className='MdetailsOther'>Quantity: {quantity}</p>
+        </div>
+        <div className='btnGroup'>
+            <button className='ABtn' onClick={() => navigate(`addItem`)} >Add Item</button>
+            <button className='UBtn' >Update Item </button>
+            <button className='DBtn' >Delete Item</button>
+        </div>
+      </div>
       </>
     );
   }
-  
+//   <button className='LoginBtn' onClick={() => navigate(`addItem`)}>Create Account</button>
+//   <button className='LoginBtn' onClick={() => navigate(`updateItem`)}>Create Account</button>
+//   <button className='LoginBtn' onClick={() => navigate(`deleteItem`)}>Create Account</button>
 
   export default Manager;
  

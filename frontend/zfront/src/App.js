@@ -6,6 +6,7 @@ import Login from './Components/Login/Login';
 import User from './Components/User/User';
 import Manager from './Components/Manager/Manager';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
+import Additem from './Components/Additem/Additem';
 import './App.css';
 
 export const AppContext = createContext()
@@ -27,6 +28,8 @@ function App() {
             <Route path="/visitor" element={<User/>}/>
             <Route path="/manager/:id" element={<Manager/>}/>
             <Route path="/createaccount" element={<CreateAccount/>}/>
+            <Route path="/manager/:id/additem" element={<Additem/>}/>
+
         </Routes>
       </AppContext.Provider>
 
