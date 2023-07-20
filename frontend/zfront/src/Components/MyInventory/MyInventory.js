@@ -172,6 +172,7 @@ const handleSubmit = () => {
                             <label> Details: </label> 
                             <input
                               type='text'
+                              maxlength = "250"
                               value={description}
                               onChange={(e) => setdescription(e.target.value)}
                               />

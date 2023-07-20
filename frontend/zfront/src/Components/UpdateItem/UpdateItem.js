@@ -66,6 +66,7 @@ const handleUpdate = (e) => {
                             <label> Details: </label> 
                             <input
                               type='text'
+                              maxlength = "250"
                               value={description}
                               onChange={(e) => setDescription(e.target.value)}
                               /><br></br> <br></br>
