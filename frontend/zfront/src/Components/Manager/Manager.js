@@ -9,10 +9,9 @@ function Manager() {
     const navigate = useNavigate()
     const hello = useLocation().state;
     const { id } = useParams();
-
+  //this area sets the state for the application
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
-    const [searchText, setSearchText] = useState('')
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
     const [quantity, setquantity] = useState('')
@@ -21,7 +20,7 @@ function Manager() {
     const [itemid, setItemId] = useState()
     const [deleteItem, setDeleteItem] = useState(false)
 
-
+//this section will retrieve the inventory
     useEffect(() => {
       fetch('http://localhost:8081/items')
         .then((res) => res.json())
@@ -33,7 +32,7 @@ function Manager() {
     },[])
   
 
-
+//this area will set the variable to be later pushed for update and add 
   const AllData = (item) => {
     // setid(item.id)
     setDisplaying(true)
@@ -45,6 +44,7 @@ function Manager() {
     console.log(item.itemname)
   }
 
+  //this section wil take all necessary informatoion and link it to the update page 
   const handleUpdate = () => {
     if (displaying === false){
       alert('select item to update')
@@ -55,6 +55,7 @@ function Manager() {
     }
   }
 
+  //this section will handle the deletion of selected files.  if first will veify if an item has been selected and being displayed
   const handleDelete = () => {
     if (displaying === false){
       alert('select item to Delete')
@@ -109,7 +110,7 @@ function Manager() {
           ))
       }
       </div>
-      {/* <div> */}
+      {/* the below is using a ternary to see if delete was selected.  if selected it updates the area to ensure managers knows they are applying the delete funciton */}
       <div className='Mlower'>
         <div>
           { deleteItem ? 

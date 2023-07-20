@@ -5,6 +5,7 @@ import { useEffect} from 'react';
 
 
 function User() {
+  //this area sets the state for theis application
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
     const [searchText, setSearchText] = useState('')
@@ -14,6 +15,7 @@ function User() {
     const [quantity, setquantity] = useState('')
 
 
+    //this area  will retrieve the items from the database
     useEffect(() => {
       fetch('http://localhost:8081/items')
         .then((res) => res.json())
@@ -24,12 +26,9 @@ function User() {
         .catch(error=>console.log('this isnt working'))
     },[])
   
-//   console.log(inventory)
-  const lowerCaseHelper = () => {
-    let searchItem = document.getElementById("searchInput").value;
-    setSearchText(searchItem.toLowerCase())
-  }
 
+
+//this area sets all necessary data when form is ready to be submitted
   const AllData = (item) => {
     setid(item.id)
     setname(item.itemname)
