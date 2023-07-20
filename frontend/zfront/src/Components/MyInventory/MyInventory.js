@@ -138,13 +138,13 @@ const handleSubmit = () => {
       <div className='fullcontainer'>
         {filteredData.map(item => (
             <div className='singleItemContainer' onClick={() => AllData(item)}>
-                <div className='itemHeader'>
+                <div className='ManageritemHeader'>
                   <p className='idstyle'>Item ID: {item.id}</p>
                   <h3>Item Name: {item.itemname}</h3>
                 </div>
               <p>Item Description: {item.description}...</p>
               <p>Inventory: {item.quantity}</p>
-              <p>Added By: {item.userid}</p>
+          
 
             </div>
           ))

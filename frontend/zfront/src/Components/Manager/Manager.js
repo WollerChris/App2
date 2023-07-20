@@ -32,11 +32,7 @@ function Manager() {
         .catch(error=>console.log('this isnt working'))
     },[])
   
-//   console.log(inventory)
-  const lowerCaseHelper = () => {
-    let searchItem = document.getElementById("searchInput").value;
-    setSearchText(searchItem.toLowerCase())
-  }
+
 
   const AllData = (item) => {
     // setid(item.id)
@@ -88,23 +84,18 @@ function Manager() {
   }
     return (
     <>
-      <div className='headerBar'>
+      <div className='ManagerheaderBar'>
         <h2 className='pstyle'>{`Welcome`}</h2>
         <h4 className='pstyle'>Whole Inventory list</h4>
-        <button className='linkBtn' onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
+        <button className='linkBtnManager' onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
 
-          {/* <div className='searchContainer'id="searchContainer">
-              <input className='searchInput' id="searchInput" type="text" name="search" 
-                  placeholder="Search for item..." onChange={lowerCaseHelper}>
-              </input>
-          </div> */}
+ 
       </div>
 
-      <div className='fullcontainer'>
-        {/* {inventory.filter(item => item.itemname.includes(searchText)) */}
+      <div className='Managerfullcontainer'>
           {inventory.map(item => (
             <div className='singleItemContainer' onClick={() => AllData(item)}>
-                <div className='itemHeader'>
+                <div className='ManageritemHeader'>
                   <p className='idstyle'>Item ID: {item.id}</p>
                   <h3>Item Name: {item.itemname}</h3>
                 </div>
