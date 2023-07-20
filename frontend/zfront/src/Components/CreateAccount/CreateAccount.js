@@ -50,21 +50,21 @@ function CreateAccount() {
                     value={ fname }
                     onChange={(e) => setfName(e.target.value)}
                     /><br></br>
-
+                <br></br>
                 <label> Last Name: </label> 
                 <input
                     type='text'
                     value={ lname }
                     onChange={(e) => setlName(e.target.value)}
                     /><br></br>
-
+                    <br></br>
                 <label> User Name:</label> 
                 <input
                     type='text'
                     value={ username }
                     onChange={(e) => setUserName(e.target.value)}
                     /><br></br>
-
+                <br></br>
                 <label> Password:   </label> 
                 <input
                     type='text'
@@ -73,7 +73,7 @@ function CreateAccount() {
                     />
                 </form>
             </div>
-            <button className='AddBtn' onClick={() => {handleSubmit()}}>ADD</button>
+            <button className='AddCreateBtn' onClick={() => {handleSubmit()}}>ADD</button>
         </div>
     )}
 
