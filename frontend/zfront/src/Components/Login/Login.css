@@ -4,7 +4,26 @@
     justify-content: center;
     flex-direction: column;
     width: 30vw;
-    background-color: lightgrey;
+    background-color: lightblue;
     padding: 20px;
     margin: auto;
+    border-radius: 15px;
+}
+
+.loginform {
+    padding: 20px;
+}
+
+
+
+.LoginBtn {
+    height: 30px;
+    margin-bottom: 10px;
+
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+.LoginBtn:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
 }

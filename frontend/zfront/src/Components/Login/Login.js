@@ -74,14 +74,14 @@ function Login() {
           </select>
         </div>
         <div>
-            <form id='myForm' onSubmit = {handleSubmit}>
+            <form className='loginform' id='myForm' onSubmit = {handleSubmit}>
                 <label> User Name:</label> 
                 <input
                     type='text'
                     value={ username }
                     onChange={(e) => setUserName(e.target.value)}
                     /><br></br>
-
+                      <br></br>
                 <label> Password: </label> 
                 <input
                     type='text'
