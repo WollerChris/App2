@@ -56,13 +56,13 @@ console.log(filteredData)
     if (displaying === false){
         alert('select item to update')
       } else if (displaying === true) {
-        console.log({userid: id, itemname: name, description: description, quantity: quantity})
+        // console.log({userid: id, itemname: name, description: description, quantity: quantity})
         fetch('http://localhost:8081/updateitem', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({userid: id, itemname: name, description: description, quantity: quantity})
+                    body: JSON.stringify({id: itemid, userid: id, itemname: name, description: description, quantity: quantity})
           })
           .then(response => response.json()
           ).then(function (data) {
@@ -73,8 +73,6 @@ console.log(filteredData)
   }
 
   const pushAdd = () => {
-
-
     fetch('http://localhost:8081/addItem', {
         method: 'POST',
         headers: {
