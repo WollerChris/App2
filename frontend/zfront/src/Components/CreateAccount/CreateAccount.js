@@ -5,20 +5,20 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CreateAccount() {
+    //this section of code sets up necessary states for forms
   const navigate = useNavigate()
   const [fname, setfName] = useState('')
   const [lname, setlName] = useState('')
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-
+//this section will add the selected data from form and push to the database user table
   const handleSubmit = (e) => {
     setfName(fname)
     setlName(lname)
     setUserName(username)
     setPassword(password)
     alert(`Account for ${fname} , ${lname} has been created`)
-    // console.log({fname: fname, lname: lname, username: username, password: password})
     navigate('/')
 
 
@@ -73,7 +73,7 @@ function CreateAccount() {
                     />
                 </form>
             </div>
-            <button className='AddCreateBtn' onClick={() => {handleSubmit()}}>ADD</button>
+            <button className='AddCreateBtn' onClick={() => {handleSubmit()}}>Create Account</button>
         </div>
     )}
 

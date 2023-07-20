@@ -9,9 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
-
+//this section sets the states for everything
   const navigate = useNavigate()
-
   const [signIn, setSignIn] = useState('');
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -19,7 +18,7 @@ function Login() {
 //   const [id, setManagerId] = useState()
 
 
-
+//this sets the signin state 
   const handleChange = (e) => {
     setSignIn(e.target.value)
   };
@@ -30,10 +29,10 @@ function Login() {
     valid()
   }
 
+  //this section will validat if user is a manager by checking its username and password agains the fethced data
   const valid = () => {
     // console.log(signIn)
-    let validManager = users.find((manager) => (manager.username === username &&  manager.password === password)
-    )
+    let validManager = users.find((manager) => (manager.username === username &&  manager.password === password))
         
     if (validManager && signIn === '/manager') {
         users.map((manager) => { if (manager.username === username) {
@@ -49,6 +48,7 @@ function Login() {
     }
   }
 
+  //this section gets the userlist from the database 
   useEffect(() => {
     fetch('http://localhost:8081/userlist')
       .then((res) => res.json())
