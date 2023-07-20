@@ -141,7 +141,7 @@ const handleSubmit = () => {
                   <p className='idstyle'>Item ID: {item.id}</p>
                   <h3>Item Name: {item.itemname}</h3>
                 </div>
-              <p>Item Description: {item.description}...</p>
+              <p>Item Description: {item.description.slice(0,100)}...</p>
               <p>Inventory: {item.quantity}</p>
           
 
