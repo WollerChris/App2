@@ -35,12 +35,64 @@
     background-color: green;
     border-radius: 10px;
 }
+.EditItemBtn:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+}
 
 .linkBtn {
 
         height: 30px;
         margin-bottom: 10px;
-        background-color: grey;
+        background-color: lightgrey;
         border-radius: 10px;
+}
+.linkBtn:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+}
 
+.AFormInpuMyInventory {
+    height: 200px;
+    margin: 0;
+}
+
+.AFormTitleInventory{
+    background-color: darkblue;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 20px;
+    height: 40px;
+    padding-left: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+.AFormDetailsInventory{
+    padding: 15px;
+}
+
+.SubmitBtnInventory{
+    height: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    background-color: lightgrey;
+    border-radius: 10px;
+    
+}
+.SubmitBtnInventory:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+}
+
+.DeleteInventoryBtn {
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: red;
+    border-radius: 10px;
+}
+.DeleteInventoryBtn:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
 }

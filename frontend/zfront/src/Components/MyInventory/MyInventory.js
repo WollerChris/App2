@@ -7,24 +7,21 @@ import { filter } from 'lodash';
 
 
 function MyInventory() {
+    // this section hold all the states for the myinventory
     const navigate = useNavigate()
     const hello = useLocation().state;
     const { id } = useParams();
-
     const [loading, setLoading] = useState(true)
     const [inventory, setInventory] = useState([])
-    const [searchText, setSearchText] = useState('')
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
     const [quantity, setquantity] = useState('')
     const [displaying, setDisplaying] = useState(false)
-    const [modifier, setModifier] = useState()
     const [itemid, setItemId] = useState()
     const [editItem, setEditItem] = useState(false)
     const [filteredData, setFilteredData] = useState([])
-console.log(id)
-console.log(filteredData)
 
+// this is fetching the inventory from the xwork database
     useEffect(() => {
       fetch('http://localhost:8081/items')
         .then((res) => res.json())
@@ -36,27 +33,27 @@ console.log(filteredData)
     },[])
   
 
-
+//this sets all the data within each card on the click of the button 
   const AllData = (item) => {
     // setid(item.id)
     setDisplaying(true)
     setname(item.itemname)
     setdescription(item.description)
     setquantity(item.quantity)
-    setModifier(item.userid)
     setItemId(item.id)
     console.log(item.itemname)
   }
 
+  //this sets the Edit value to true, triggering the change from view to edit
   const handleUpdate = () => {
     setEditItem(true)
   }
 
+    //this section is pushing edit updates to the database inventory 
   const pushUpdate = () => {
     if (displaying === false){
         alert('select item to update')
       } else if (displaying === true) {
-        // console.log({userid: id, itemname: name, description: description, quantity: quantity})
         fetch('http://localhost:8081/updateitem', {
             method: 'PUT',
             headers: {
@@ -72,6 +69,7 @@ console.log(filteredData)
       }
   }
 
+  //this section with add the item to the database when submited
   const pushAdd = () => {
     fetch('http://localhost:8081/addItem', {
         method: 'POST',
@@ -87,6 +85,7 @@ console.log(filteredData)
       window.location.reload()
   }
 
+  //this section will delete an item if selected 
   const handleDelete = () => {
     if (displaying === false){
       alert('select item to Delete')
@@ -109,7 +108,7 @@ console.log(filteredData)
     };
   }
 
-
+//this section filters the inventory so that only items created by user will be displayed
   const filterdata = mine => {
     setFilteredData(
       inventory.filter(myItem => {
@@ -130,14 +129,13 @@ const handleSubmit = () => {
     return (
     <>
       <div className='MIheaderBar'>
-        <h2 className='pstyle'>{`Welcome, button to see your personal inventory below.`}</h2>
+        <h2 className='pstyle'>{`Welcome, click button to see your personal inventory below.`}</h2>
         <button className='UBtn' onClick={() => {filterdata()}} >Click To View My Inventory </button>
         <button className='linkBtn' onClick={() => navigate(`/manager/${id}`,{state: hello})} >Main Inventory</button>
 
       </div>
 
       <div className='fullcontainer'>
-        {/* {inventory.filter(item => item.itemname.includes(searchText)) */}
         {filteredData.map(item => (
             <div className='singleItemContainer' onClick={() => AllData(item)}>
                 <div className='itemHeader'>
@@ -155,13 +153,14 @@ const handleSubmit = () => {
 
       <div className='Mlower'>
         <div>
+            {/* this will use a ternary to check if edit state is true or false */}
           { editItem ? 
                 <div className='MdetailareaEdit'>
-                   <div className='AFormInput'>
+                   <div className='AFormInpuMyInventory'>
                   <div className='AFormHeader'>
-                    <h1 className='AFormTitle'>Complete Form to Add Item: </h1>
+                    <h1 className='AFormTitleInventory'>Complete Form to Add or Edit Item: </h1>
                   </div>
-                  <div className='AFormDetails'>
+                  <div className='AFormDetailsInventory'>
 
                       <form id='myForm2' onSubmit = {handleSubmit}>
                             <label> Name:  </label> 
@@ -188,8 +187,8 @@ const handleSubmit = () => {
                         
                   </div>
                   <div className='Footer'>
-                    <button className='SubmitBtn' onClick={() => {pushAdd()}}>Add Item</button>
-                    <button className='SubmitBtn' onClick={() => {pushUpdate()}}>Update Item</button>
+                    <button className='SubmitBtnInventory' onClick={() => {pushAdd()}}>Add Item</button>
+                    <button className='SubmitBtnInventory' onClick={() => {pushUpdate()}}>Update Item</button>
                   </div>
             </div>
 
@@ -204,10 +203,9 @@ const handleSubmit = () => {
             }
         </div>
         <div className='btnGroup'>
-            {/* <button className='ABtn' onClick={() => navigate(`/manager/${id}/addItem`,{ state: id })} >Add Item</button>
-            <button className='UBtn' onClick={() => {handleUpdate()}} >Update Item </button> */}
+
             <button className='EditItemBtn' onClick={() => {handleUpdate()}}>Add/Edit Item</button>
-            <button className='DeleteItemBtn' onClick={() => {handleDelete()}}>DeleteItem</button>
+            <button className='DeleteInventoryBtn' onClick={() => {handleDelete()}}>DeleteItem</button>
 
         </div>
       </div>
