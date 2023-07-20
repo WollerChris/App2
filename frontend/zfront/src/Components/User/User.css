@@ -59,7 +59,7 @@
     justify-content: center;   
     height: 200px;
     margin: 10px 30px;
-    background-color: darkgrey;
+    background-color: lightgrey;
     color: black;
     border-radius: 15px;
 }
@@ -77,4 +77,21 @@
 .detailsOther {
     padding: 10px;
     margin:0px
+}
+
+.useritemHeader{
+    display: flex;
+    width: 350px;
+    height: 80px;
+    background-color: lightblue;
+    color: black
+}
+.userdetailtitle {
+    background-color: lightblue;
+    margin: 0px;
+    color: black;
+    padding: 20px;
+    border-top-left-radius: 15px;    
+    border-top-right-radius: 15px;
+
 }

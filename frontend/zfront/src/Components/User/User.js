@@ -46,18 +46,13 @@ function User() {
       <>
       <div className='headerBar'>
       <h4 className='pstyle'>Inventory Below</h4>
-        <div className='searchContainer'id="searchContainer">
-            <input className='searchInput' id="searchInput" type="text" name="search" 
-                placeholder="Search for item..." onChange={lowerCaseHelper}>
-            </input>
-        </div>
       </div>
 
       <div className='fullcontainer'>
         {inventory.filter(item => item.itemname.toLowerCase().includes(searchText))
           .map(item => (
             <div className='singleItemContainer' onClick={() => AllData(item)}>
-                <div className='itemHeader'>
+                <div className='useritemHeader'>
                   <p className='idstyle'>Item ID: {item.id}</p>
                   <h3>Item Name: {item.itemname}</h3>
                 </div>
@@ -67,8 +62,8 @@ function User() {
           ))
       }
       </div>
-      <div className='detailarea'>
-        <h1 className='detailtitle'>Item Name: {name} </h1>
+      <div className='Mdetailarea'>
+        <h1 className='userdetailtitle'>Item Name: {name} </h1>
 
         <h3 className='detailsOther'>Description: {description} </h3>
         <p className='detailsOther'>Quantity: {quantity}</p>
