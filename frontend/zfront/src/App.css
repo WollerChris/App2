@@ -11,12 +11,19 @@
 
 .HeaderTitle {
   margin-top: 0px;
-  height: 6vh;
+  text-align: center;
+  height: 50px;
+  width: 100px;
   color: black;
-  padding-left: 5vw;
+  /* padding-left: 5vw; */
   padding-top: 1vw;
-
+  border-radius: 15px;
 }
+.HeaderTitle:hover {
+  cursor: pointer;
+  box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+}
+
 
 .ReturnBtn{
   height: 30px;
