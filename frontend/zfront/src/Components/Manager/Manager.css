@@ -124,6 +124,7 @@
     margin-bottom: 10px;
     background-color: yellow;
     border-radius: 10px;
+    margin-left: 20px;
 }
 
 .CancelItemBtn {
@@ -131,6 +132,8 @@
     margin-bottom: 10px;
     background-color: green;
     border-radius: 10px;
+    margin-left: 20px;
+
 }
 
 .linkBtnManager {

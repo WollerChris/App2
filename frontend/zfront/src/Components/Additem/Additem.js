@@ -5,20 +5,18 @@ import { useNavigate, useLocation } from 'react-router-dom'
 
 
 function Additem() {
+  //this section will set the states of the form so it can be posted to the database
     const navigate = useNavigate()
     const useridstrng = useLocation().state;
     const [itemname, setName] = useState()
     const [description, setDescription] = useState()
     const [quantitystrng, setQuantity] = useState()
 
-console.log(`Id passed to addItem is: ${useridstrng}`)
-
-
+//this section will handle the post to the database using fetch.  
 const handleSubmit = (e) => {
-        // console.log(userid, itemname, description, quantity)
+  //below i user parseInt to turn the string into a number format to match the database
     let userid = parseInt(useridstrng)
     let quantity = parseInt(quantitystrng)
-    // const Update = {numUserId, itemname, description, numQuantity}
     navigate(`/manager/${useridstrng}`)
     console.log(userid , quantity)
 
@@ -37,16 +35,13 @@ const handleSubmit = (e) => {
     };
 
 
-
-  
-
     return (
       <>
-        <div className='AFormInput'>
+        <div className='UpdateFormInput'>
                   <div className='AFormHeader'>
                     <h1 className='AFormTitle'>Complete Form to Add Item: </h1>
                   </div>
-                  <div className='AFormDetails'>
+                  <div className='updateFormDetails'>
 
                       <form id='myForm' onSubmit = {handleSubmit}>
                             <label> Name:  </label> 
@@ -54,26 +49,26 @@ const handleSubmit = (e) => {
                               type='text'
                               value={ itemname }
                               onChange={(e) => setName(e.target.value)}
-                              />
+                              /> <br></br><br></br>
 
                             <label> Details: </label> 
                             <input
                               type='text'
                               value={description}
                               onChange={(e) => setDescription(e.target.value)}
-                              />
+                              /><br></br><br></br>
 
                             <label> Quantity: </label> 
                             <input
                               type='number'
                               value={ quantitystrng }
                               onChange={(e) => setQuantity(e.target.value)}
-                              />                            
+                              /> <br></br><br></br>                   
                       </form>
                             
                   </div>
                   <div className='Footer'>
-                    <button className='SubmitBtn' onClick={() => {handleSubmit()}}>Add Item</button>
+                    <button className='UpdateCreateBtn' onClick={() => {handleSubmit()}}>Add Item</button>
                   </div>
             </div>
       </>

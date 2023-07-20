@@ -128,7 +128,7 @@ function Manager() {
                     <h1 className='Mdetailtitle'>Item Name: {name} </h1>
                     <h3 className='MdetailsOther'>Description: {description} </h3>
                     <p className='MdetailsOther'>Quantity: {quantity}</p>
-                    <p className='MdetailsOther'>Updated/Modified By: {modifier}</p>
+                    <p className='MdetailsOther'>Added By: {modifier}</p>
                 </div>
             }
         </div>

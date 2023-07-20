@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 
 
 function UpdateItem() {
+  //This part of the code pulls the details using the useLocation feature and saves as a varaible to be used later
     const navigate = useNavigate()
     const itemname1 = useLocation().state.itemname;
     const description1 = useLocation().state.description;
@@ -13,14 +14,16 @@ function UpdateItem() {
     const manager1 = useLocation().state.manager;
     const id1 = useLocation().state.id;
 
+    //this area sets the states for the form
     const [id, setItemId] = useState(id1)
     const userid = userid1
     const [itemname, setName] = useState(itemname1)
     const [description, setDescription] = useState(description1)
     const [quantity, setQuantity] = useState(quantity1)
 
+
+    //this will put your updated details to the database and than return you back to the manager page
 const handleUpdate = (e) => {
-        console.log(id, userid, itemname, description, quantity)
     navigate(`/manager/${manager1}`)
 
     fetch('http://localhost:8081/updateitem', {
@@ -37,13 +40,9 @@ const handleUpdate = (e) => {
       window.location.reload()
     };
 
-
-
-  
-
     return (
       <>
-        <div className='AFormInput'>
+        <div className='EditFormInput'>
                   <div className='AFormHeader'>
                     <h1 className='AFormTitle'>Complete Form to Update Item: </h1>
                   </div>
@@ -55,20 +54,20 @@ const handleUpdate = (e) => {
                               type='text'
                               value={ id }
                               onChange={(e) => setItemId(e.target.value)}
-                              />
+                              /><br></br> <br></br>
                             <label> Name:  </label> 
                             <input
                               type='text'
                               value={ itemname }
                               onChange={(e) => setName(e.target.value)}
-                              />
+                              /><br></br> <br></br>
 
                             <label> Details: </label> 
                             <input
                               type='text'
                               value={description}
                               onChange={(e) => setDescription(e.target.value)}
-                              />
+                              /><br></br> <br></br>
 
                             <label> Quantity: </label> 
                             <input
@@ -80,7 +79,7 @@ const handleUpdate = (e) => {
                             
                   </div>
                   <div className='Footer'>
-                    <button className='SubmitBtn' onClick={() => {handleUpdate()}}>Update Item</button>
+                    <button className='EditCreateBtn' onClick={() => {handleUpdate()}}>Update Item</button>
                   </div>
             </div>
       </>
