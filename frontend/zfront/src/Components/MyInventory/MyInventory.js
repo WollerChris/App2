@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './MyInventory.css';
 import { useEffect} from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
-import { filter } from 'lodash';
 
 
 
@@ -129,7 +128,7 @@ const handleSubmit = () => {
     return (
     <>
       <div className='MIheaderBar'>
-        <h2 className='pstyle'>{`Welcome, click button to see your personal inventory below.`}</h2>
+        <h2 className='pstyle'>{`Welcome ${hello}, click button to see your personal inventory below.`}</h2>
         <button className='UBtn' onClick={() => {filterdata()}} >Click To View My Inventory </button>
         <button className='linkBtn' onClick={() => navigate(`/manager/${id}`,{state: hello})} >Main Inventory</button>
 

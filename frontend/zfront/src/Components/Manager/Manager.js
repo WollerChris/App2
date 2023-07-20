@@ -49,7 +49,7 @@ function Manager() {
     if (displaying === false){
       alert('select item to update')
     } else if (displaying === true) {
-      const data = {userid: modifier, itemname: name, description: description, quantity: quantity, manager: id}
+      const data = {userid: modifier, itemname: name, description: description, quantity: quantity, manager: id, name: hello}
       navigate(`UpdateItem`,{state: {id: itemid, userid: modifier, itemname: name, description: description, quantity: quantity, manager: id}})
       console.log(data)
     }
@@ -85,7 +85,9 @@ function Manager() {
     return (
     <>
       <div className='ManagerheaderBar'>
-        <h2 className='pstyle'>{`Welcome`}</h2>
+        { hello === null ? <h2 className='pstyle'> {`Welcome`}</h2> : <h2 className='pstyle'> {`Welcome ${hello}`}</h2> }
+
+      
         <h4 className='pstyle'>Whole Inventory list</h4>
         <button className='linkBtnManager' onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
 

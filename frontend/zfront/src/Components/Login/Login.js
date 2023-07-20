@@ -48,7 +48,7 @@ function Login() {
     }
   }
 
-  //this section gets the userlist from the database 
+  //this section gets the userlist from the database
   useEffect(() => {
     fetch('http://localhost:8081/userlist')
       .then((res) => res.json())

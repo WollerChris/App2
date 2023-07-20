@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Login from './Components/Login/Login';
 import User from './Components/User/User';

@@ -8,6 +8,7 @@ function UpdateItem() {
   //This part of the code pulls the details using the useLocation feature and saves as a varaible to be used later
     const navigate = useNavigate()
     const itemname1 = useLocation().state.itemname;
+    const hello = useLocation().state.name
     const description1 = useLocation().state.description;
     const userid1 = useLocation().state.userid;
     const quantity1 = useLocation().state.quantity;
@@ -24,7 +25,7 @@ function UpdateItem() {
 
     //this will put your updated details to the database and than return you back to the manager page
 const handleUpdate = (e) => {
-    navigate(`/manager/${manager1}`)
+    navigate(`/manager/${manager1}`,{ state: hello })
 
     fetch('http://localhost:8081/updateitem', {
         method: 'PUT',
