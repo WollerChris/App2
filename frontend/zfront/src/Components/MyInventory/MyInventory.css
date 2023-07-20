@@ -6,3 +6,41 @@
     padding: 20px;
     background-color: lightblue;
 }
+
+.MdetailareaEdit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    margin: 10px 30px;
+    background-color: lightblue;
+    color: black;
+    border-radius: 15px;
+    width: 1000px
+}
+
+.MdetailtitleEdit {
+    background-color: darkblue;
+    margin: 0px;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 15px;    
+    border-top-right-radius: 15px;
+
+}
+
+
+.EditItemBtn {
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: green;
+    border-radius: 10px;
+}
+
+.linkBtn {
+
+        height: 30px;
+        margin-bottom: 10px;
+        background-color: grey;
+        border-radius: 10px;
+
+}

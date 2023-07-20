@@ -20,7 +20,7 @@ function MyInventory() {
     const [displaying, setDisplaying] = useState(false)
     const [modifier, setModifier] = useState()
     const [itemid, setItemId] = useState()
-    const [deleteItem, setDeleteItem] = useState(false)
+    const [editItem, setEditItem] = useState(false)
     const [filteredData, setFilteredData] = useState([])
 console.log(id)
 console.log(filteredData)
@@ -49,13 +49,44 @@ console.log(filteredData)
   }
 
   const handleUpdate = () => {
+    setEditItem(true)
+  }
+
+  const pushUpdate = () => {
     if (displaying === false){
-      alert('select item to update')
-    } else if (displaying === true) {
-      const data = {userid: modifier, itemname: name, description: description, quantity: quantity, manager: id}
-      navigate(`UpdateItem`,{state: {id: itemid, userid: modifier, itemname: name, description: description, quantity: quantity, manager: id}})
-      console.log(data)
-    }
+        alert('select item to update')
+      } else if (displaying === true) {
+        console.log({userid: id, itemname: name, description: description, quantity: quantity})
+        fetch('http://localhost:8081/updateitem', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({userid: id, itemname: name, description: description, quantity: quantity})
+          })
+          .then(response => response.json()
+          ).then(function (data) {
+            console.log(data)
+          })
+          window.location.reload()
+      }
+  }
+
+  const pushAdd = () => {
+
+
+    fetch('http://localhost:8081/addItem', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({userid: id, itemname: name, description: description, quantity: quantity})
+      })
+      .then(response => response.json()
+      ).then(function (data) {
+        console.log(data)
+      })
+      window.location.reload()
   }
 
   const handleDelete = () => {
@@ -75,8 +106,9 @@ console.log(filteredData)
       ).then(function (data) {
         console.log(data)
       })
+      window.location.reload();
+
     };
-    window.location.reload();
   }
 
 
@@ -85,12 +117,14 @@ console.log(filteredData)
       inventory.filter(myItem => {
         console.log(myItem)
         return myItem.userid == id
-        // if (myItem.userid == id) {
-        //     console.log(myItem)
-        // }
       })
     )
   }
+
+const handleSubmit = () => {
+    
+}
+
 
   if (loading){
     return <p>loading</p>
@@ -98,9 +132,9 @@ console.log(filteredData)
     return (
     <>
       <div className='MIheaderBar'>
-        <h2 className='pstyle'>{`Welcome, below is your personal inventory`}</h2>
+        <h2 className='pstyle'>{`Welcome, button to see your personal inventory below.`}</h2>
         <button className='UBtn' onClick={() => {filterdata()}} >Click To View My Inventory </button>
-        <button onClick={() => navigate(`/manager/${id}`,{state: hello})} >Main Inventory</button>
+        <button className='linkBtn' onClick={() => navigate(`/manager/${id}`,{state: hello})} >Main Inventory</button>
 
       </div>
 
@@ -122,17 +156,44 @@ console.log(filteredData)
       </div>
 
       <div className='Mlower'>
-        {/* <div>
-          { deleteItem ? 
-                <div className='MdetailareaDelete'>
-                    <h1 className='MdetailtitleDelete'>Item Name: {name} </h1>
-                    <h3 className='MdetailsOther'>Description: {description} </h3>
-                    <p className='MdetailsOther'>Quantity: {quantity}</p>
-                    <p className='MdetailsOther'>Updated/Modified By: {modifier}</p>
-                    <div>
-                      <button className='DeleteItemBtn' onClick={() => {handleDelete()}}>ARE YOU SURE YOU WANT TO DELETE ITEM</button>
-                      <button className='CancelItemBtn' onClick={() => setDeleteItem(false)}>Cancel Delete</button>
-                    </div>
+        <div>
+          { editItem ? 
+                <div className='MdetailareaEdit'>
+                   <div className='AFormInput'>
+                  <div className='AFormHeader'>
+                    <h1 className='AFormTitle'>Complete Form to Add Item: </h1>
+                  </div>
+                  <div className='AFormDetails'>
+
+                      <form id='myForm2' onSubmit = {handleSubmit}>
+                            <label> Name:  </label> 
+                            <input
+                              type='text'
+                              value={ name }
+                              onChange={(e) => setname(e.target.value)}
+                              />
+
+                            <label> Details: </label> 
+                            <input
+                              type='text'
+                              value={description}
+                              onChange={(e) => setdescription(e.target.value)}
+                              />
+
+                            <label> Quantity: </label> 
+                            <input
+                              type='number'
+                              value={ quantity }
+                              onChange={(e) => setquantity(e.target.value)}
+                              />                            
+                      </form>
+                        
+                  </div>
+                  <div className='Footer'>
+                    <button className='SubmitBtn' onClick={() => {pushAdd()}}>Add Item</button>
+                    <button className='SubmitBtn' onClick={() => {pushUpdate()}}>Update Item</button>
+                  </div>
+            </div>
 
 
                 </div>
@@ -141,15 +202,16 @@ console.log(filteredData)
                     <h1 className='Mdetailtitle'>Item Name: {name} </h1>
                     <h3 className='MdetailsOther'>Description: {description} </h3>
                     <p className='MdetailsOther'>Quantity: {quantity}</p>
-                    <p className='MdetailsOther'>Updated/Modified By: {modifier}</p>
                 </div>
             }
         </div>
         <div className='btnGroup'>
-            <button className='ABtn' onClick={() => navigate(`/manager/${id}/addItem`,{ state: id })} >Add Item</button>
-            <button className='UBtn' onClick={() => {handleUpdate()}} >Update Item </button>
-            <button className='DBtn' onClick={() => setDeleteItem(true)}>Delete Item</button>
-        </div> */}
+            {/* <button className='ABtn' onClick={() => navigate(`/manager/${id}/addItem`,{ state: id })} >Add Item</button>
+            <button className='UBtn' onClick={() => {handleUpdate()}} >Update Item </button> */}
+            <button className='EditItemBtn' onClick={() => {handleUpdate()}}>Add/Edit Item</button>
+            <button className='DeleteItemBtn' onClick={() => {handleDelete()}}>DeleteItem</button>
+
+        </div>
       </div>
   </>
     

@@ -106,3 +106,12 @@
     background-color: green;
     border-radius: 10px;
 }
+
+.linkBtn {
+
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: grey;
+    border-radius: 10px;
+
+}

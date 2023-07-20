@@ -90,8 +90,8 @@ function Manager() {
     <>
       <div className='headerBar'>
         <h2 className='pstyle'>{`Welcome`}</h2>
-        <h4 className='pstyle'>Inventory list</h4>
-        <button onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
+        <h4 className='pstyle'>Whole Inventory list</h4>
+        <button className='linkBtn' onClick={() => navigate(`myInventory`, {state: hello})} >{`View My Inventory Items`}</button>
 
           {/* <div className='searchContainer'id="searchContainer">
               <input className='searchInput' id="searchInput" type="text" name="search" 
