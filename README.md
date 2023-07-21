@@ -27,7 +27,7 @@ I am also utilizing EXPRESS
 from there a migrated and seeded the falls. 
 
 
-the frontend needs to be run fron the zfront folder
+the frontend needs to be run fron the zfront folder. 
 
 
 
